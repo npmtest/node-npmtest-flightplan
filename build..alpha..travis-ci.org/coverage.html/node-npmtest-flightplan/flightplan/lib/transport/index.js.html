@@ -1,0 +1,1670 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-flightplan/flightplan/lib/transport/index.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-flightplan">npmtest-flightplan (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-flightplan/flightplan/lib/transport/index.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">23.46% <small>(19 / 81)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 23)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">23.46% <small>(19 / 81)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-flightplan/flightplan/lib/transport/</a> &#187; index.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var format = require('util').format
+  , extend = require('util-extend')
+  , Future = require('fibers/future')
+  , prompt = require('prompt')
+  , chalk = require('chalk')
+  , logger = require('../logger')
+  , errors = require('../errors')
+  , commands = require('./commands')
+  , queue = require('../utils/queue')
+  , escapeSingleQuotes = require('../utils').escapeSingleQuotes;
+&nbsp;
+/**
+ * A transport is the interface you use during flights. Basically they
+ * offer you a set of methods to execute a chain of commands. Depending on the
+ * type of flight, this is either a `Shell` object for local
+ * flights, or an `SSH` for remote flights. Both transports
+ * expose the same set of methods as described in this section.
+ *
+ * ```javascript
+ * plan.local(function(local) {
+ *   local.echo('Shell.echo() called');
+ * });
+ *
+ * plan.remote(function(remote) {
+ *   remote.echo('SSH.echo() called');
+ * });
+ * ```
+ *
+ * We call the Transport object `transport` in the following section to avoid
+ * confusion. However, do yourself a favor and use `local` for local, and
+ * `remote` for remote flights.
+ *
+ * #### Accessing runtime information
+ *
+ * Flightplan provides information during flights with the `runtime` properties:
+ *
+ * ```javascript
+ * plan.remote(function(transport) { // applies to local flights as well
+ *   // Flightplan specific information
+ *   console.log(plan.runtime.task);    // 'default'
+ *   console.log(plan.runtime.target);  // 'production'
+ *   console.log(plan.runtime.hosts);   // [{ host: 'www1.example.com', port: 22 }, ...]
+ *   console.log(plan.runtime.options); // { debug: true, ... }
+ *
+ *   // Flight specific information
+ *   console.log(transport.runtime); // { host: 'www1.example.com', port: 22 }
+ * });
+ * ```
+ *
+ * @class Transport
+ * @return {Object} transport
+ */
+<span class="fstat-no" title="function not covered" >function Transport(context) {</span>
+<span class="cstat-no" title="statement not covered" >  this._context = context;</span>
+<span class="cstat-no" title="statement not covered" >  this._options = {</span>
+    silent: false,
+    failsafe: false
+  };
+<span class="cstat-no" title="statement not covered" >  this._execWith = '';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this._logger = logger({</span>
+    debug: this._context.options.debug,
+    prefix: this._context.remote.host
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.runtime = Object.freeze(extend({}, this._context.remote)); </span>// userland
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  commands.forEach(<span class="fstat-no" title="function not covered" >function(command) {</span></span>
+<span class="cstat-no" title="statement not covered" >    this[command] = <span class="fstat-no" title="function not covered" >function(args, options) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if(typeof args === 'object') {</span>
+<span class="cstat-no" title="statement not covered" >        options = args;</span>
+<span class="cstat-no" title="statement not covered" >        args = null;</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      var _command = format('%s%s', this._execWith, command);</span>
+<span class="cstat-no" title="statement not covered" >      _command = args ? format('%s %s', _command, args) : _command;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      return this._exec(_command, options || {});</span>
+    };
+  }, this);
+}
+&nbsp;
+Transport.prototype._exec = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >  throw new Error('This transport does not implement `_exec(command, options)`');</span>
+};
+&nbsp;
+/**
+ * To execute a command you have the choice between using `exec()` or one
+ * of the handy wrappers for often used commands:
+ * `transport.exec('ls -al')` is the same as `transport.ls('-al')`. If a
+ * command returns a non-zero exit code, the flightplan will be aborted and
+ * all subsequent commands and flights won't get executed.
+ *
+ * #### Options
+ * Options can be passed as a second argument. If `failsafe: true` is
+ * passed, the command is allowed to fail (i.e. exiting with a non-zero
+ * exit code), whereas `silent: true` will simply suppress its output.
+ *
+ * ```javascript
+ * // output of `ls -al` is suppressed
+ * transport.ls('-al', {silent: true});
+ *
+ * // flightplan continues even if command fails with exit code `1`
+ * transport.ls('-al foo', {failsafe: true}); // ls: foo: No such file or directory
+ *
+ * // both options together
+ * transport.ls('-al foo', {silent: true, failsafe: true});
+ * ```
+ *
+ * To apply these options to multiple commands check out the docs of
+ * `transport.silent()` and `transport.failsafe()`.
+ *
+ * #### Return value
+ * Each command returns an object containing `code`, `stdout` and`stderr`:
+ *
+ * ```javascript
+ * var result = transport.echo('Hello world');
+ * console.log(result); // { code: 0, stdout: 'Hello world\n', stderr: null }
+ * ```
+ *
+ * #### Advanced options
+ * Flightplan uses `child_process#exec()` for executing local commands and
+ * `mscdex/ssh2#exec()` for remote commands. Options passed with `exec` will
+ * be forwarded to either of these functions.
+ *
+ * ```javascript
+ * // increase maxBuffer for child_process#exec()
+ * local.ls('-al', {exec: {maxBuffer: 2000*1024}});
+ *
+ * // enable pty for mscdex/ssh2#exec()
+ * remote.ls('-al', {exec: {pty: true}});
+ * ```
+ *
+ * @method exec(command[, options])
+ * @return {Object} code: int, stdout: String, stderr: String
+ */
+Transport.prototype.exec = <span class="fstat-no" title="function not covered" >function(command, options) {</span>
+<span class="cstat-no" title="statement not covered" >  command = command || '';</span>
+<span class="cstat-no" title="statement not covered" >  options = options || {};</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return this._exec(format('%s%s', this._execWith, command), options);</span>
+};
+&nbsp;
+/**
+ * Execute a command as another user with `sudo()`. It has the same
+ * signature as `exec()`. Per default, the user under which the command
+ * will be executed is "root". This can be changed by passing
+ * `user: "name"` with the second argument:
+ *
+ * ```javascript
+ * // will run: echo 'echo Hello world' | sudo -u root -i bash
+ * transport.sudo('echo Hello world');
+ *
+ * // will run echo 'echo Hello world' | sudo -u www -i bash
+ * transport.sudo('echo Hello world', {user: 'www'});
+ *
+ * // further options passed (see `exec()`)
+ * transport.sudo('echo Hello world', {user: 'www', silent: true, failsafe: true});
+ * ```
+ *
+ * Flightplan's `sudo()` requires a certain setup on your host. In order to
+ * make things work on a typical Ubuntu installation, follow these rules:
+ *
+ * ```bash
+ * # Scenario:
+ * # 'pstadler' is the user for connecting to the host and 'www' is the user
+ * # under which you want to execute commands with sudo.
+ *
+ * # 1. 'pstadler' has to be in the sudo group:
+ * $ groups pstadler
+ * pstadler : pstadler sudo
+ *
+ * # 2. 'pstadler' needs to be able to run sudo -u 'www' without a password.
+ * # In order to do this, add the following line to /etc/sudoers:
+ * pstadler ALL=(www) NOPASSWD: ALL
+ *
+ * # 3. user 'www' needs to have a login shell (e.g. bash, sh, zsh, ...)
+ * $ cat /etc/passwd | grep www
+ * www:x:1002:1002::/home/www:/bin/bash   # GOOD
+ * www:x:1002:1002::/home/www:/bin/false  # BAD
+ * ```
+ *
+ * @method sudo(command[, options])
+ * @return {Object} code: int, stdout: String, stderr: String
+ */
+Transport.prototype.sudo = <span class="fstat-no" title="function not covered" >function(command, options) {</span>
+<span class="cstat-no" title="statement not covered" >  command = command || '';</span>
+<span class="cstat-no" title="statement not covered" >  options = options || {};</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var user = options.user || 'root';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  command = format('%s%s', this._execWith, command);</span>
+<span class="cstat-no" title="statement not covered" >  command = escapeSingleQuotes(command);</span>
+<span class="cstat-no" title="statement not covered" >  command = format("echo '%s' | sudo -u %s -i bash", command, user);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return this._exec(command, options);</span>
+};
+&nbsp;
+/**
+ * Copy a list of files to the current target's remote host(s) using
+ * `rsync` with the SSH protocol. File transfers are executed in parallel.
+ *  After finishing all transfers, an array containing results from
+ * `transport.exec()` is returned. This method is only available on local
+ * flights.
+ *
+ * ```javascript
+ * var files = ['path/to/file1', 'path/to/file2'];
+ * local.transfer(files, '/tmp/foo');
+ * ```
+ *
+ * #### Files argument
+ * To make things more comfortable, the `files` argument doesn't have to be
+ * passed as an array. Results from previous commands and zero-terminated
+ * strings are handled as well:
+ *
+ * ```javascript
+ * // use result from a previous command
+ * var files = local.git('ls-files', {silent: true}); // get list of files under version control
+ * local.transfer(files, '/tmp/foo');
+ *
+ * // use zero-terminated result from a previous command
+ * var files = local.exec('(git ls-files -z;find node_modules -type f -print0)', {silent: true});
+ * local.transfer(files, '/tmp/foo');
+ *
+ * // use results from multiple commands
+ * var result1 = local.git('ls-files', {silent: true}).stdout.split('\n');
+ * var result2 = local.find('node_modules -type f', {silent: true}).stdout.split('\n');
+ * var files = result1.concat(result2);
+ * files.push('path/to/another/file');
+ * local.transfer(files, '/tmp/foo');
+ * ```
+ *
+ * `transfer()` will use the current host's username defined with
+ * `target()` unless `fly` is called with the `-u|--username` option.
+ * In this case the latter will be used. If debugging is enabled
+ * (either with `target()` or with `fly --debug`), `rsync` is executed
+ * in verbose mode (`-vv`).
+ *
+ * @method transfer(files, remoteDir[, options])
+ * @return {Array} [results]
+ */
+Transport.prototype.transfer = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >  throw new Error('This transport does not implement `transfer(files, remoteDir, options)`');</span>
+};
+&nbsp;
+/**
+ * Prompt for user input.
+ *
+ * ```javascript
+ * var input = transport.prompt('Are you sure you want to continue? [yes]');
+ * if(input.indexOf('yes') === -1) {
+ *   plan.abort('User canceled flight');
+ * }
+ *
+ * // prompt for password (with UNIX-style hidden input)
+ * var password = transport.prompt('Enter your password:', { hidden: true });
+ *
+ * // prompt when deploying to a specific target
+ * if(plan.runtime.target === 'production') {
+ *   var input = transport.prompt('Ready for deploying to production? [yes]');
+ *   if(input.indexOf('yes') === -1) {
+ *     plan.abort('User canceled flight');
+ *   }
+ * }
+ * ```
+ *
+ * @method prompt(message[, options])
+ * @return {String} input
+ */
+var promptQueue = queue();
+&nbsp;
+Transport.prototype.prompt = <span class="fstat-no" title="function not covered" >function(message, options) {</span>
+<span class="cstat-no" title="statement not covered" >  options = options || {};</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var prefix = this._context.remote.host;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return this.waitFor(<span class="fstat-no" title="function not covered" >function(done) {</span></span>
+<span class="cstat-no" title="statement not covered" >    promptQueue.push(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >      prompt.colors = false;</span>
+<span class="cstat-no" title="statement not covered" >      prompt.delimiter = '';</span>
+<span class="cstat-no" title="statement not covered" >      prompt.message = chalk.gray(prefix) + ' * ';</span>
+<span class="cstat-no" title="statement not covered" >      prompt.start();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      prompt.get({</span>
+        name: 'input',
+        description: chalk.blue(message),
+        hidden: options.hidden || false,
+        required: options.required || false
+      }, <span class="fstat-no" title="function not covered" >function(err, result) {</span>
+<span class="cstat-no" title="statement not covered" >        if(err) {</span>
+<span class="cstat-no" title="statement not covered" >          throw new errors.ProcessInterruptedError('User canceled prompt');</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        promptQueue.done(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >          done(result ? result.input : null);</span>
+        });
+      });
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    promptQueue.next();</span>
+  });
+};
+&nbsp;
+/**
+ * Execute a function and return after the callback `done` is called.
+ * This is used for running asynchronous functions in a synchronous way.
+ *
+ * The callback takes an optional argument which is then returned by
+ * `waitFor()`.
+ *
+ * ```javascript
+ * var result = transport.waitFor(function(done) {
+ *   require('node-notifier').notify({
+ *       message: 'Hello World'
+ *     }, function(err, response) {
+ *       done(err || 'sent!');
+ *     });
+ * });
+ * console.log(result); // 'sent!'
+ * ```
+ *
+ * @method waitFor(fn(done))
+ * @return {} mixed
+ */
+Transport.prototype.waitFor = <span class="fstat-no" title="function not covered" >function(fn) {</span>
+<span class="fstat-no" title="function not covered" >  function task() {</span>
+<span class="cstat-no" title="statement not covered" >    var future = new Future();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    fn(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >      future.return(result);</span>
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return future;</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return task().wait();</span>
+};
+&nbsp;
+/**
+ * Execute commands with a certain context.
+ *
+ * ```javascript
+ * transport.with('cd /tmp', function() {
+ *   transport.ls('-al'); // 'cd /tmp &amp;&amp; ls -al'
+ * });
+ *
+ * transport.with({silent: true, failsafe: true}, function() {
+ *   transport.ls('-al'); // output suppressed, fail safely
+ * });
+ *
+ * transport.with('cd /tmp', {silent: true}, function() {
+ *   transport.ls('-al'); // 'cd /tmp &amp;&amp; ls -al', output suppressed
+ * });
+ * ```
+ *
+ * @method with(command|options[, options], fn)
+ */
+Transport.prototype.with = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >  var previousExecWith = this._execWith;</span>
+<span class="cstat-no" title="statement not covered" >  var previousOptions = extend({}, this._options); </span>// clone
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var args = Array.prototype.slice.call(arguments, 0);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  for(var i in args) {</span>
+<span class="cstat-no" title="statement not covered" >    if(typeof args[i] === 'string') {</span>
+<span class="cstat-no" title="statement not covered" >      this._execWith += args[i] + ' &amp;&amp; ';</span>
+    } else <span class="cstat-no" title="statement not covered" >if(typeof args[i] === 'object') {</span>
+<span class="cstat-no" title="statement not covered" >      this._options = extend(this._options, args[i]);</span>
+    } else <span class="cstat-no" title="statement not covered" >if(typeof args[i] === 'function') {</span>
+<span class="cstat-no" title="statement not covered" >      args[i]();</span>
+    }
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this._execWith = previousExecWith;</span>
+<span class="cstat-no" title="statement not covered" >  this._options = previousOptions;</span>
+};
+&nbsp;
+/**
+ * When calling `silent()` all subsequent commands are executed without
+ * printing their output to stdout until `verbose()` is called.
+ *
+ * ```javascript
+ * transport.ls(); // output will be printed to stdout
+ * transport.silent();
+ * transport.ls(); // output won't be printed to stdout
+ * ```
+ *
+ * @method silent()
+ */
+Transport.prototype.silent = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >  this._options.silent = true;</span>
+};
+&nbsp;
+/**
+ * Calling `verbose()` reverts the behavior introduced with `silent()`.
+ * Output of commands will be printed to stdout.
+ *
+ * ```javascript
+ * transport.silent();
+ * transport.ls(); // output won't be printed to stdout
+ * transport.verbose();
+ * transport.ls(); // output will be printed to stdout
+ * ```
+ *
+ * @method verbose()
+ */
+Transport.prototype.verbose = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >  this._options.silent = false;</span>
+};
+&nbsp;
+/**
+ * When calling `failsafe()`, all subsequent commands are allowed to fail
+ * until `unsafe()` is called. In other words, the flight will continue
+ * even if the return code of the command is not `0`. This is helpful if
+ * either you expect a command to fail or their nature is to return a
+ * non-zero exit code.
+ *
+ * ```javascript
+ * transport.failsafe();
+ * transport.ls('foo'); // ls: foo: No such file or directory
+ * transport.log('Previous command failed, but flight was not aborted');
+ * ```
+ *
+ * @method failsafe()
+ */
+Transport.prototype.failsafe = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >  this._options.failsafe = true;</span>
+};
+&nbsp;
+/**
+ * Calling `unsafe()` reverts the behavior introduced with `failsafe()`.
+ * The flight will be aborted if a subsequent command fails (i.e. returns
+ * a non-zero exit code). This is the default behavior.
+ *
+ * ```javascript
+ * transport.failsafe();
+ * transport.ls('foo'); // ls: foo: No such file or directory
+ * transport.log('Previous command failed, but flight was not aborted');
+ * transport.unsafe();
+ * transport.ls('foo'); // ls: foo: No such file or directory
+ * // flight aborted
+ * ```
+ *
+ * @method unsafe()
+ */
+Transport.prototype.unsafe = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >  this._options.failsafe = false;</span>
+};
+&nbsp;
+/**
+ * Print a message to stdout. Flightplan takes care that the message
+ * is formatted correctly within the current context.
+ *
+ * ```javascript
+ * transport.log('Copying files to remote hosts');
+ * ```
+ *
+ * @method log(message)
+ */
+Transport.prototype.log = <span class="fstat-no" title="function not covered" >function(message) {</span>
+<span class="cstat-no" title="statement not covered" >  this._logger.user(message);</span>
+};
+&nbsp;
+/**
+ * Print a debug message to stdout if debug mode is enabled. Flightplan
+ * takes care that the message is formatted correctly within the current
+ * context.
+ *
+ * ```javascript
+ * transport.debug('Copying files to remote hosts');
+ * ```
+ *
+ * @method debug(message)
+ */
+Transport.prototype.debug = <span class="fstat-no" title="function not covered" >function(message) {</span>
+<span class="cstat-no" title="statement not covered" >  this._logger.debug(message);</span>
+};
+&nbsp;
+Transport.prototype.close = <span class="fstat-no" title="function not covered" >function() {</span>};
+&nbsp;
+module.exports = Transport;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 14:23:14 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
