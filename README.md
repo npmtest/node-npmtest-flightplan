@@ -1,7 +1,7 @@
 # test coverage for  [flightplan (v0.6.15)](https://github.com/pstadler/flightplan)  [![npm package](https://img.shields.io/npm/v/npmtest-flightplan.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-flightplan) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-flightplan.svg)](https://travis-ci.org/npmtest/node-npmtest-flightplan)
 #### Library for streamlining application deployment or systems administration tasks
 
-[![NPM](https://nodei.co/npm/flightplan.png?downloads=true)](https://www.npmjs.com/package/flightplan)
+[![NPM](https://nodei.co/npm/flightplan.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/flightplan)
 
 | git-branch : | [alpha](https://github.com/npmtest/node-npmtest-flightplan/tree/alpha)|
 |--:|:--|
@@ -9,11 +9,17 @@
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-flightplan/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-flightplan/build/test-report.html)|
 | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-flightplan/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-flightplan/tree/gh-pages/build)|
 
-[![istanbul-coverage](https://npmtest.github.io/node-npmtest-flightplan/build/screenCapture.buildCustomOrg.browser.coverage.html.png)](https://npmtest.github.io/node-npmtest-flightplan/build/coverage.html/index.html)
+- [https://npmtest.github.io/node-npmtest-flightplan/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-flightplan/build/coverage.html/index.html)
 
-[![test-report](https://npmtest.github.io/node-npmtest-flightplan/build/screenCapture.buildCustomOrg.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmtest%252Fnode-npmtest-flightplan%252Ftmp%252Fbuild%252Ftest-report.html.png)](https://npmtest.github.io/node-npmtest-flightplan/build/test-report.html)
+[![istanbul-coverage](https://npmtest.github.io/node-npmtest-flightplan/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fcoverage.lib.html.png)](https://npmtest.github.io/node-npmtest-flightplan/build/coverage.html/index.html)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-flightplan/build/screenCapture.buildApidoc.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmdoc%252Fnode-npmdoc-flightplan%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-flightplan/build/apidoc.html)
+- [https://npmtest.github.io/node-npmtest-flightplan/build/test-report.html](https://npmtest.github.io/node-npmtest-flightplan/build/test-report.html)
+
+[![test-report](https://npmtest.github.io/node-npmtest-flightplan/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Ftest-report.html.png)](https://npmtest.github.io/node-npmtest-flightplan/build/test-report.html)
+
+- [https://npmdoc.github.io/node-npmdoc-flightplan/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-flightplan/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-flightplan/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-flightplan/build/apidoc.html)
 
 ![npmPackageListing](https://npmtest.github.io/node-npmtest-flightplan/build/screenCapture.npmPackageListing.svg)
 
@@ -27,8 +33,7 @@
 
 {
     "author": {
-        "name": "Patrick Stadler",
-        "email": "patrick.stadler@gmail.com"
+        "name": "Patrick Stadler"
     },
     "bin": {
         "fly": "./bin/fly.js"
@@ -89,8 +94,7 @@
     "license": "MIT",
     "maintainers": [
         {
-            "name": "pstadler",
-            "email": "patrick.stadler@gmail.com"
+            "name": "pstadler"
         }
     ],
     "name": "flightplan",
@@ -98,7 +102,6 @@
     "pre-commit": [
         "lint"
     ],
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/pstadler/flightplan.git"
