@@ -1,4 +1,7 @@
-# test coverage for  [flightplan (v0.6.15)](https://github.com/pstadler/flightplan)  [![npm package](https://img.shields.io/npm/v/npmtest-flightplan.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-flightplan) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-flightplan.svg)](https://travis-ci.org/npmtest/node-npmtest-flightplan)
+# npmtest-flightplan
+
+#### basic test coverage for  [flightplan (v0.6.15)](https://github.com/pstadler/flightplan)  [![npm package](https://img.shields.io/npm/v/npmtest-flightplan.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-flightplan) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-flightplan.svg)](https://travis-ci.org/npmtest/node-npmtest-flightplan)
+
 #### Library for streamlining application deployment or systems administration tasks
 
 [![NPM](https://nodei.co/npm/flightplan.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/flightplan)
@@ -7,7 +10,7 @@
 |--:|:--|
 | coverage : | [![istanbul-coverage](https://npmtest.github.io/node-npmtest-flightplan/build/coverage.badge.svg)](https://npmtest.github.io/node-npmtest-flightplan/build/coverage.html/index.html)|
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-flightplan/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-flightplan/build/test-report.html)|
-| build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-flightplan/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-flightplan/tree/gh-pages/build)|
+| test-server-github : | [![github.com test-server](https://npmtest.github.io/node-npmtest-flightplan/GitHub-Mark-32px.png)](https://npmtest.github.io/node-npmtest-flightplan/build/app/index.html) | | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-flightplan/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-flightplan/tree/gh-pages/build)|
 
 - [https://npmtest.github.io/node-npmtest-flightplan/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-flightplan/build/coverage.html/index.html)
 
