@@ -192,21 +192,21 @@
 <body>
 <div class="header low">
     <h1 style="font-weight: bold;">
-        <a href="https://github.com/npmtest/node-npmtest-flightplan">npmtest-flightplan (v0.0.2)</a>
+        <a href="https://github.com/npmtest/node-npmtest-flightplan">npmtest-flightplan (v2017.4.25)</a>
     </h1>
     <h1>Code coverage report for <span class="entity">node-npmtest-flightplan/node_modules/flightplan/bin/fly.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">43.18% <small>(19 / 44)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">29.55% <small>(13 / 44)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">41.67% <small>(10 / 24)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">20.83% <small>(5 / 24)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">50% <small>(1 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">43.18% <small>(19 / 44)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">29.55% <small>(13 / 44)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -427,22 +427,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -559,24 +559,24 @@ cli.on('requireFail', <span class="fstat-no" title="function not covered" >funct
 <span class="cstat-no" title="statement not covered" >  process.exit(1);</span>
 });
 &nbsp;
-var invoke = function(env) {
+var invoke = <span class="fstat-no" title="function not covered" >function(env) {</span>
 &nbsp;
-  <span class="missing-if-branch" title="else path not taken" >E</span>if(!env.configPath) {
-    process.stderr.write(format('Error: %s not found\n', (options.flightplan || 'flightplan.js')));
-    process.exit(1);
+<span class="cstat-no" title="statement not covered" >  if(!env.configPath) {</span>
+<span class="cstat-no" title="statement not covered" >    process.stderr.write(format('Error: %s not found\n', (options.flightplan || 'flightplan.js')));</span>
+<span class="cstat-no" title="statement not covered" >    process.exit(1);</span>
   }
 &nbsp;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if(!env.modulePath) {
+<span class="cstat-no" title="statement not covered" >  if(!env.modulePath) {</span>
 <span class="cstat-no" title="statement not covered" >    process.stderr.write(format('Error: Local flightplan package not found in %s\n', env.cwd));</span>
 <span class="cstat-no" title="statement not covered" >    process.exit(1);</span>
   }
 &nbsp;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if(!semver.satisfies(env.modulePackage.version, '&gt;=0.5.0')) {
+<span class="cstat-no" title="statement not covered" >  if(!semver.satisfies(env.modulePackage.version, '&gt;=0.5.0')) {</span>
 <span class="cstat-no" title="statement not covered" >    process.stderr.write('Error: local flightplan package version should be &gt;=0.5.0\n');</span>
 <span class="cstat-no" title="statement not covered" >    process.exit(1);</span>
   }
 &nbsp;
-  process.chdir(env.configBase);
+<span class="cstat-no" title="statement not covered" >  process.chdir(env.configBase);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  require(env.configPath); </span>// eslint-disable-line global-require
 <span class="cstat-no" title="statement not covered" >  var instance = require(env.modulePath); </span>// eslint-disable-line global-require
@@ -620,7 +620,7 @@ cli.launch({
 </table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 24 2017 17:10:59 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Wed Apr 26 2017 05:33:35 GMT+0000 (UTC)</div>
 </div>
 </body>
 </html>
